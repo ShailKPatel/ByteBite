@@ -1,20 +1,12 @@
-package ByteBites;
-
-import java.util.Scanner;
+import java.util.*;
 
 public class InputValidator {
     // This program will make sure that you don't accidentally crash the program
     // when you enter something other than an int
 
-    private Scanner scanner;
-
-    InputValidator() {
-        scanner = new Scanner(System.in);
-    }
+    private Scanner scanner = new Scanner(System.in);
 
     int getIntInput(String prompt) {
-        scanner = new Scanner(System.in);
-
         while (true) {
             try {
                 System.out.print(prompt);
@@ -23,6 +15,7 @@ public class InputValidator {
                 return input;
             } catch (NumberFormatException e) {
                 System.out.println("Invalid Input. Please Enter a Valid Integer.");
+                System.out.println();
             }
         }
     }
@@ -42,6 +35,7 @@ public class InputValidator {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid Input. Please Enter a Valid Integer.");
+                System.out.println();
             }
         }
     }
@@ -55,6 +49,7 @@ public class InputValidator {
                 return userInput;
             } else {
                 System.out.println("Invalid Input. Please Enter a String of 32 Characters or Shorter.");
+                System.out.println();
             }
         }
     }
