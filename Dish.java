@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Dish {
 
-    private Scanner scanner = new Scanner(System.in);
     private InputValidator iv = new InputValidator();
 
     String dishName;
@@ -119,14 +118,13 @@ public class Dish {
                 case 10:
                     // For Custom option, prompt the user to input their desired cuisine
                     System.out.print("Enter Custom Cuisine: ");
-                    String customCuisine = scanner.nextLine();
+                    String customCuisine = iv.getStringInput("Enter Custom Cuisine : ");
                     this.dishCuisineTags.add(customCuisine);
                     break;
                 default:
                     System.out.println("Invalid Choice\nSetting Cuisine To Custom");
                     // For Custom option, prompt the user to input their desired cuisine
-                    System.out.print("Enter Custom Cuisine: ");
-                    String defaultCuisine = scanner.nextLine();
+                    String defaultCuisine = iv.getStringInput("Enter Custom Cuisine : ");
                     this.dishCuisineTags.add(defaultCuisine);
                     System.out.println();
             }
@@ -186,8 +184,7 @@ public class Dish {
                 case 10:
                     // For Custom option, prompt the user to input their desired tag
 
-                    System.out.print("Enter Custom Diet Tag: ");
-                    String customTag = scanner.nextLine();
+                    String customTag = iv.getStringInput("Enter Custom Diet Tag : ");
                     this.dishDietTags.add(customTag);
                     counter++;
                     break;
