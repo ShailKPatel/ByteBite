@@ -11,8 +11,7 @@ public class InputValidator {
             try {
                 System.out.print(prompt);
                 String userInput = scanner.nextLine();
-                int input = Integer.parseInt(userInput);
-                return input;
+                return Integer.parseInt(userInput);
             } catch (NumberFormatException e) {
                 System.out.println("Invalid Input. Please Enter a Valid Integer.");
                 System.out.println();
