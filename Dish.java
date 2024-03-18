@@ -86,8 +86,10 @@ public class Dish {
             System.out.println("If you're done adding Tags, press 0.");
             choice = iv.getIntInput(
                     "1. Indian\n2. South Indian\n3. Gujarati\n4. Punjabi\n5. Chinese\n6. Japanese\n7. Italian\n8. Mexican\n9. Continental\n10. Custom\nChoose Cuisine Tags : ");
-            
+
             switch (choice) {
+                case 0:
+                    break;
                 case 1:
                     this.dishCuisineTags.add("Indian");
                     break;
@@ -126,7 +128,6 @@ public class Dish {
                     // For Custom option, prompt the user to input their desired cuisine
                     String defaultCuisine = iv.getStringInput("Enter Custom Cuisine : ");
                     this.dishCuisineTags.add(defaultCuisine);
-                    System.out.println();
             }
         } while ((choice != 0) && (counter < 5));
         System.out.println();
