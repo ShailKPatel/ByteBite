@@ -3,31 +3,54 @@ import java.util.*;
 public class Restaurant {
     private InputValidator iv = new InputValidator();
 
-    String restaurantName;
-    String restaurantAddress;
-    String restaurantTheme;
-    int noOfStars;
-    int noOfReviews;
+    private String restaurantName;
+    private String restaurantAddress;
+    private String restaurantTheme;
+    private int numberOfStars;
+    private int numberOfReviews;
 
-    ArrayList<Dish> restaurantMenu = new ArrayList<>();
+    private ArrayList<Dish> restaurantMenu = new ArrayList<>();
 
-    Restaurant() {
+    // Default constructor
+    public Restaurant() {
+        this.restaurantName = iv.getStringInput32Char("Enter Restaurant Name : ");
 
-        this.restaurantName = iv.getStringInput("Enter Restaurant Name : ");
-        System.out.println();
+        this.restaurantAddress = iv.getStringInput64Char("Enter Restaurant Address : ");
 
-        this.restaurantAddress = iv.getStringInput("Enter Restaurant Address : ");
-        System.out.println();
+        setRestaurantTheme();
 
-        setRestaurantTheme(); // LOC : 40
+        setRestaurantRating();
 
-        setRestaurantRating(); // LOC :
-
-        addToDishArray(); // LOC : 195
-
+        addToDishArray();
     }
 
-    void setRestaurantTheme() {
+    // Getters
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public String getRestaurantAddress() {
+        return restaurantAddress;
+    }
+
+    public String getRestaurantTheme() {
+        return restaurantTheme;
+    }
+
+    public int getNumberOfStars() {
+        return numberOfStars;
+    }
+
+    public int getNumberOfReviews() {
+        return numberOfReviews;
+    }
+
+    public ArrayList<Dish> getRestaurantMenu() {
+        return restaurantMenu;
+    }
+
+    // Setters
+    private void setRestaurantTheme() {
         System.out.println("Choose a theme to filter restaurants:");
         System.out.println("1. Fast Food");
         System.out.println("2. Dine In");
@@ -56,33 +79,31 @@ public class Restaurant {
             default:
                 System.out.println("Invalid choice. Setting theme to Fast Food.");
                 this.restaurantTheme = "Fast Food";
-
         }
     }
 
-    void setRestaurantRating() {
-        this.noOfStars = iv.getIntInput("Enter Number of Stars : ");
-        while (this.noOfStars < 0) {
-            System.out.println("Number of Stars cant be less than zero");
-            this.noOfStars = iv.getIntInput("Enter Number of Reviews for this Restaurant : ");
+    private void setRestaurantRating() {
+        this.numberOfStars = iv.getIntInput("Enter Number of Stars : ");
+        while (this.numberOfStars < 0) {
+            System.out.println("Number of Stars can't be less than zero");
+            this.numberOfStars = iv.getIntInput("Enter Number of Stars : ");
         }
         System.out.println();
 
-        this.noOfReviews = iv.getIntInput("Enter Number of Reviews : ");
-        while (this.noOfReviews <= 0) {
-            System.out.println("Number of Reviews cant be zero");
-            this.noOfReviews = iv.getIntInput("Enter Number of Reviews : ");
+        this.numberOfReviews = iv.getIntInput("Enter Number of Reviews : ");
+        while (this.numberOfReviews <= 0) {
+            System.out.println("Number of Reviews can't be zero or less");
+            this.numberOfReviews = iv.getIntInput("Enter Number of Reviews : ");
         }
         System.out.println();
     }
 
-    void addToDishArray() {
-
+    private void addToDishArray() {
         int numDishes = iv.getIntInput("Enter the Number of Dishes : ");
 
         for (int i = 1; i <= numDishes; i++) {
             System.out.println();
-            System.out.println("Enter details for Dish " + (i) + " : ");
+            System.out.println("Enter details for Dish " + i + " : ");
             System.out.println("------------------------------");
 
             restaurantMenu.add(new Dish()); // LOC : 35
@@ -90,9 +111,9 @@ public class Restaurant {
         System.out.println();
     }
 
-    void printDishArray() {
+    public void printDishArray() {
         if (restaurantMenu.isEmpty()) {
-            System.out.println("This Restraunt isn't serving.");
+            System.out.println("This Restaurant isn't serving.");
             System.out.println();
         } else {
             System.out.println("Dishes in the Restaurant : " + this.restaurantName);
@@ -100,10 +121,21 @@ public class Restaurant {
             for (int i = 0; i < restaurantMenu.size(); i++) {
                 System.out.println("Dish " + (i + 1) + " : ");
                 System.out.println();
-                this.restaurantMenu.get(i).dishPrint(); // Using dishPrint method from Dish class
+                this.restaurantMenu.get(i).toString(); // to update
                 System.out.println("------------------------------");
             }
         }
     }
 
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "restaurantName='" + restaurantName + '\'' +
+                ", restaurantAddress='" + restaurantAddress + '\'' +
+                ", restaurantTheme='" + restaurantTheme + '\'' +
+                ", numberOfStars=" + numberOfStars +
+                ", numberOfReviews=" + numberOfReviews +
+                ", restaurantMenu=" + restaurantMenu +
+                '}';
+    }
 }
