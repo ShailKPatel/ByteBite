@@ -3,6 +3,8 @@
 // String getStringInput(String prompt, int maxLength) : 27
 // String setValidPhoneNumber() : 41
 // String setValidEmail() : 55
+// String getStringInput32Char(String prompt) : 
+// String getStringInput64Char(String prompt) : 
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -75,6 +77,34 @@ public class InputValidator {
                 return password;
             } else {
                 System.out.println("Invalid password. Password must be at least 8 characters long, contain at least one digit, one lowercase letter, and one uppercase letter.");
+                System.out.println();
+            }
+        }
+    }
+
+    public String getStringInput32Char(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String userInput = scanner.nextLine();
+
+            if (userInput.length() <= 32) {
+                return userInput;
+            } else {
+                System.out.println("Invalid input. Please enter a string of 32 characters or shorter.");
+                System.out.println();
+            }
+        }
+    }
+
+    public String getStringInput64Char(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String userInput = scanner.nextLine();
+
+            if (userInput.length() <= 64) {
+                return userInput;
+            } else {
+                System.out.println("Invalid input. Please enter a string of 64 characters or shorter.");
                 System.out.println();
             }
         }
