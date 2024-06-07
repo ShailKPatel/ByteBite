@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.ArrayList;
 
 public class Restaurant {
     private InputValidator iv = new InputValidator();
