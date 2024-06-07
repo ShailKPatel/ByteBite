@@ -1,56 +1,68 @@
-import java.util.*;
+// LOC:
+// int getIntInput(String prompt) : 14
+// String getStringInput(String prompt, int maxLength) : 27
+// String getValidPhoneNumber() : 41
+// String getValidEmail() : 55
+
+import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class InputValidator {
-    // This program will make sure that you don't accidentally crash the program
-    // when you enter something other than an int
 
-    private Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
-    int getIntInput(String prompt) {
+    public int getIntInput(String prompt) {
         while (true) {
             try {
                 System.out.print(prompt);
                 String userInput = scanner.nextLine();
                 return Integer.parseInt(userInput);
             } catch (NumberFormatException e) {
-                System.out.println("Invalid Input. Please Enter a Valid Integer.");
+                System.out.println("Invalid input. Please enter a valid integer.");
                 System.out.println();
             }
         }
     }
 
-    int getPositiveIntInput(String prompt) {
-        while (true) {
-            try {
-                System.out.print(prompt);
-                String userInput = scanner.nextLine();
-                int input = Integer.parseInt(userInput);
-
-                // Check if input is positive
-                if (input > 0) {
-                    return input;
-                } else {
-                    System.out.println("Invalid Input. Please Enter a Positive Integer.");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid Input. Please Enter a Valid Integer.");
-                System.out.println();
-            }
-        }
-    }
-
-    String getStringInput(String prompt) {
+    public String getStringInput(String prompt, int maxLength) {
         while (true) {
             System.out.print(prompt);
             String userInput = scanner.nextLine();
 
-            if (userInput.length() <= 32) {
+            if (userInput.length() <= maxLength) {
                 return userInput;
             } else {
-                System.out.println("Invalid Input. Please Enter a String of 32 Characters or Shorter.");
+                System.out.println("Invalid input. Please enter a string of " + maxLength + " characters or shorter.");
                 System.out.println();
             }
         }
     }
 
+    public String getValidPhoneNumber() {
+        String regex = "^[789]\\d{9}$"; // Indian phone number regex
+        while (true) {
+            System.out.print("Enter phone number: ");
+            String phone = scanner.nextLine();
+            if (Pattern.matches(regex, phone)) {
+                return phone;
+            } else {
+                System.out.println("Invalid phone number. Please enter a valid Indian phone number.");
+                System.out.println();
+            }
+        }
+    }
+
+    public String getValidEmail() {
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        while (true) {
+            System.out.print("Enter email: ");
+            String email = scanner.nextLine();
+            if (Pattern.matches(regex, email)) {
+                return email;
+            } else {
+                System.out.println("Invalid email. Please enter a valid email address.");
+                System.out.println();
+            }
+        }
+    }
 }
