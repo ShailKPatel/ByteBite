@@ -14,17 +14,16 @@ public class Dish {
 
     private InputValidator iv = new InputValidator();
 
-    public String dishName;
-    public String dishCourse;
+    private String dishName;
+    private String dishCourse;
 
-    // Using ArrayList as it has fast random access (O(1) - constant time)
-    public ArrayList<String> dishCuisineTags = new ArrayList<>();
-    public ArrayList<String> dishDietTags = new ArrayList<>();
+    private ArrayList<String> dishCuisineTags = new ArrayList<>();
+    private ArrayList<String> dishDietTags = new ArrayList<>();
 
-    public int dishNumberOfStars;
-    public int dishNumberOfRatings;
-    public int dishPrice;
-    public int dishPreparationTime;
+    private int dishNumberOfStars;
+    private int dishNumberOfRatings;
+    private int dishPrice;
+    private int dishPreparationTime;
 
     // Default constructor
     public Dish() {
@@ -41,7 +40,6 @@ public class Dish {
         setDishPreparationTime();
     }
 
-    // Method to set the dish course
     private void setDishCourse() {
         System.out.println();
         int choice = iv.getIntInput(
@@ -66,7 +64,6 @@ public class Dish {
         System.out.println();
     }
 
-    // Method to set the dish cuisine tags
     private void setDishCuisine() {
         int choice;
         int counter = 0;
@@ -103,7 +100,6 @@ public class Dish {
         System.out.println();
     }
 
-    // Method to set the dish diet tags
     private void setDishDiet() {
         int choice;
         int counter = 0;
@@ -138,7 +134,6 @@ public class Dish {
         System.out.println();
     }
 
-    // Method to set the dish price
     private void setDishPrice() {
         while (true) {
             this.dishPrice = iv.getIntInput("Enter Price: ");
@@ -152,7 +147,6 @@ public class Dish {
         System.out.println();
     }
 
-    // Method to set the dish preparation time
     private void setDishPreparationTime() {
         int minDishPreparationTime = 10;
         int maxDishPreparationTime = 120;
@@ -217,10 +211,5 @@ public class Dish {
                 ", dishPrice=" + dishPrice +
                 ", dishPreparationTime=" + dishPreparationTime +
                 '}';
-    }
-
-    // Method to print dish details
-    public void dishPrint() {
-        System.out.println(this.toString());
     }
 }
