@@ -65,4 +65,18 @@ public class InputValidator {
             }
         }
     }
+
+    public String setValidPassword() {
+        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$"; // Password must contain at least one digit, one lowercase, one uppercase letter, and be at least 8 characters long
+        while (true) {
+            System.out.print("Enter password: ");
+            String password = scanner.nextLine();
+            if (Pattern.matches(regex, password)) {
+                return password;
+            } else {
+                System.out.println("Invalid password. Password must be at least 8 characters long, contain at least one digit, one lowercase letter, and one uppercase letter.");
+                System.out.println();
+            }
+        }
+    }
 }
