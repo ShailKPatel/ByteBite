@@ -6,65 +6,67 @@
 // String getEmail() : 
 //  String getAddress() : 
 
-
 public class Customer {
     private static int counter = 0;
-    private int id;
-    private String name;
-    private String phoneNumber;
-    private String email;
-    private String address;
-
-    private String password;
+    private int customerId;
+    private String customerName;
+    private String customerPhoneNumber;
+    private String customerEmail;
+    private String customerAddress;
+    private String customerPassword;
 
     // Default constructor
     public Customer() {
         InputValidator iv = new InputValidator();
 
-        this.id = ++counter;
+        this.customerId = ++counter;
         
-        this.name = iv.getStringInput32Char("Enter name: ");
+        this.customerName = iv.getStringInput32Char("Enter name: ");
 
-        this.phoneNumber = iv.setValidPhoneNumber();
+        this.customerPhoneNumber = iv.setValidPhoneNumber();
 
-        this.email = iv.setValidEmail();
+        this.customerEmail = iv.setValidEmail();
 
-        this.address = iv.getStringInput64Char("Enter address: ");
+        this.customerAddress = iv.getStringInput64Char("Enter address: ");
 
-        this.password = iv.setValidPassword();
+        this.customerPassword = iv.setValidPassword();
     }
 
-
-    // Getters and Setters
-    public int getId() {
-        return id;
+    // Getters
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public String getName() {
-        return name;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getCustomerPhoneNumber() {
+        return customerPhoneNumber;
     }
 
-    public String getEmail() {
-        return email;
-    }
-    public String getAddress() {
-        return address;
+    public String getCustomerEmail() {
+        return customerEmail;
     }
 
+    public String getCustomerAddress() {
+        return customerAddress;
+    }
+
+    // Method to verify password
+    public boolean verifyPassword(String inputPassword) {
+        return this.customerPassword.equals(inputPassword);
+    }
+
+    // toString method to display customer information
     @Override
     public String toString() {
         return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
+                "customerId=" + customerId +
+                ", customerName='" + customerName + '\'' +
+                ", customerPhoneNumber='" + customerPhoneNumber + '\'' +
+                ", customerEmail='" + customerEmail + '\'' +
+                ", customerAddress='" + customerAddress + '\'' +
                 '}';
     }
 }
-
-
