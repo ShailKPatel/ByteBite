@@ -1,8 +1,8 @@
 // LOC:
 // int getIntInput(String prompt) : 14
 // String getStringInput(String prompt, int maxLength) : 27
-// String getValidPhoneNumber() : 41
-// String getValidEmail() : 55
+// String setValidPhoneNumber() : 41
+// String setValidEmail() : 55
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -38,7 +38,7 @@ public class InputValidator {
         }
     }
 
-    public String getValidPhoneNumber() {
+    public String setValidPhoneNumber() {
         String regex = "^[789]\\d{9}$"; // Indian phone number regex
         while (true) {
             System.out.print("Enter phone number: ");
@@ -52,7 +52,7 @@ public class InputValidator {
         }
     }
 
-    public String getValidEmail() {
+    public String setValidEmail() {
         String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
         while (true) {
             System.out.print("Enter email: ");
