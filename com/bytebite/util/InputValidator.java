@@ -114,4 +114,43 @@ public class InputValidator {
             }
         }
     }
+
+    public String setValidPhoneNumber(String phoneNumber) {
+        String regex = "^[789]\\d{9}$"; // Indian phone number regex
+
+        if (Pattern.matches(regex, phoneNumber)) {
+            return phoneNumber;
+        }
+
+        while (true) {
+            System.out.print("Enter phone number: ");
+            String phone = scanner.nextLine();
+            if (Pattern.matches(regex, phone)) {
+                return phone;
+            } else {
+                System.out.println("Invalid phone number. Please enter a valid Indian phone number.");
+                System.out.println();
+            }
+        }
+    }
+
+    public String setValidEmail(String email) {
+        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+
+        if (Pattern.matches(regex, email)) {
+            return email;
+        }
+
+        while (true) {
+            System.out.print("Enter password: ");
+            String password = scanner.nextLine();
+            if (Pattern.matches(regex, password)) {
+                return password;
+            } else {
+                System.out.println(
+                        "Invalid password. Password must be at least 8 characters long, contain at least one digit, one lowercase letter, and one uppercase letter.");
+                System.out.println();
+            }
+        }
+    }
 }
