@@ -9,9 +9,11 @@ import java.util.ArrayList;
 import com.bytebite.util.InputValidator;
 
 public class Dish {
+    private static int dishIdCounter = 0;
 
     private InputValidator iv = new InputValidator();
 
+    private int dishId;
     private String dishName;
     private String dishCourse;
 
@@ -25,6 +27,7 @@ public class Dish {
 
     // Default constructor
     public Dish() {
+        this.dishId = dishIdCounter++;
         this.dishName = iv.getStringInput32Char("Enter Dish Name: ");
 
         setDishCourse();
@@ -232,6 +235,10 @@ public class Dish {
     }
 
     // Getters
+
+    public int getDishId() {
+        return dishId;
+    }
     public String getDishName() {
         return dishName;
     }
