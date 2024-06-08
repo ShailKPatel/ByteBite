@@ -11,7 +11,6 @@ package com.bytebite.person;
 import com.bytebite.util.InputValidator;
 
 public class Customer extends Person {
-    private InputValidator iv;
 
     private static int counter = 0;
     private int customerId;
@@ -26,7 +25,6 @@ public class Customer extends Person {
             iv.setValidPassword()
         );
 
-        this.iv = iv;
         this.customerId = ++counter;
         this.customerAddress = iv.getStringInput64Char("Enter address: ");
     }
