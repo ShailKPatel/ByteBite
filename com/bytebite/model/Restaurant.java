@@ -3,8 +3,11 @@ import java.util.ArrayList;
 import com.bytebite.util.InputValidator;
 
 public class Restaurant {
+    private static int restaurantIdCounter = 0;
+
     private InputValidator iv = new InputValidator();
 
+    private int restaurantId;
     private String restaurantName;
     private String restaurantAddress;
     private String restaurantTheme;
@@ -15,6 +18,8 @@ public class Restaurant {
 
     // Default constructor
     public Restaurant() {
+        this.restaurantId = ++restaurantIdCounter;
+
         this.restaurantName = iv.getStringInput32Char("Enter Restaurant Name : ");
 
         this.restaurantAddress = iv.getStringInput64Char("Enter Restaurant Address : ");
@@ -27,6 +32,10 @@ public class Restaurant {
     }
 
     // Getters
+    public int getRestaurantId() {
+        return restaurantId;
+    }
+    
     public String getRestaurantName() {
         return restaurantName;
     }
