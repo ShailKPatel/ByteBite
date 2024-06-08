@@ -1,3 +1,5 @@
+package com.bytebite.person;
+
 // LOC:
 // Customer() : 
 // int getId() : 
@@ -6,67 +8,50 @@
 // String getEmail() : 
 //  String getAddress() : 
 
-public class Customer {
+import com.bytebite.util.InputValidator;
+
+public class Customer extends Person {
+    private InputValidator iv;
+
     private static int counter = 0;
     private int customerId;
-    private String customerName;
-    private String customerPhoneNumber;
-    private String customerEmail;
     private String customerAddress;
-    private String customerPassword;
 
-    // Default constructor
-    public Customer() {
-        InputValidator iv = new InputValidator();
+    public Customer(InputValidator iv) {
+        // here we had to call iv because of issue with static
+        super(
+            iv.getStringInput32Char("Enter name: "),
+            iv.setValidPhoneNumber(),
+            iv.setValidEmail(),
+            iv.setValidPassword()
+        );
 
+        this.iv = iv;
         this.customerId = ++counter;
-        
-        this.customerName = iv.getStringInput32Char("Enter name: ");
-
-        this.customerPhoneNumber = iv.setValidPhoneNumber();
-
-        this.customerEmail = iv.setValidEmail();
-
         this.customerAddress = iv.getStringInput64Char("Enter address: ");
-
-        this.customerPassword = iv.setValidPassword();
     }
 
-    // Getters
+    // Getters and setters for customer
     public int getCustomerId() {
         return customerId;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public String getCustomerPhoneNumber() {
-        return customerPhoneNumber;
-    }
-
-    public String getCustomerEmail() {
-        return customerEmail;
     }
 
     public String getCustomerAddress() {
         return customerAddress;
     }
 
-    // Method to verify password
-    public boolean verifyPassword(String inputPassword) {
-        return this.customerPassword.equals(inputPassword);
+    public void setCustomerAddress(String customerAddress) {
+        this.customerAddress = customerAddress;
     }
 
-    // toString method to display customer information
     @Override
     public String toString() {
         return "Customer{" +
                 "customerId=" + customerId +
-                ", customerName='" + customerName + '\'' +
-                ", customerPhoneNumber='" + customerPhoneNumber + '\'' +
-                ", customerEmail='" + customerEmail + '\'' +
-                ", customerAddress='" + customerAddress + '\'' +
+                ", name='" + getName() + '\'' +
+                ", phoneNumber='" + getPhoneNumber() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", address='" + customerAddress + '\'' +
                 '}';
     }
 }
